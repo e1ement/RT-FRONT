@@ -1,10 +1,9 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
 import {UsersLitComponent} from './users-lit/users-lit.component';
-import { UserComponent } from './user/user.component';
+import {UserComponent} from './user/user.component';
 import {UsersResolver} from './resolvers/users.resolver';
 import {UserResolver} from './resolvers/user.resolver';
-import {Tab1Component, Tab2Component} from '../layout/tabs/tabs.component';
 import {TasksComponent} from './user/tasks/tasks.component';
 
 const routes: Routes = [
@@ -52,4 +51,5 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class UsersRoutingModule { }
+export class UsersRoutingModule {
+}
