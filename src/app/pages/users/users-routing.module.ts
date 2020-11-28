@@ -5,6 +5,7 @@ import {UserComponent} from './user/user.component';
 import {UsersResolver} from './resolvers/users.resolver';
 import {UserResolver} from './resolvers/user.resolver';
 import {TasksComponent} from './user/tasks/tasks.component';
+import {StatsComponent} from './user/stats/stats.component';
 
 const routes: Routes = [
   {
@@ -29,7 +30,7 @@ const routes: Routes = [
       },
       {
         path: 'stats',
-        component: TasksComponent,
+        component: StatsComponent,
       },
       {
         path: 'history',

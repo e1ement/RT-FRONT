@@ -18,9 +18,11 @@ import {NgxStarsModule} from 'ngx-stars';
 import { TasksComponent } from './user/tasks/tasks.component';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatInputModule} from '@angular/material/input';
+import { StatsComponent } from './user/stats/stats.component';
+import {RoundProgressModule} from 'angular-svg-round-progressbar';
 
 @NgModule({
-  declarations: [UsersLitComponent, UserComponent, TasksComponent],
+  declarations: [UsersLitComponent, UserComponent, TasksComponent, StatsComponent],
   imports: [
     CommonModule,
     UsersRoutingModule,
@@ -37,6 +39,7 @@ import {MatInputModule} from '@angular/material/input';
     NbChatModule,
     MatButtonToggleModule,
     MatInputModule,
+    RoundProgressModule,
   ],
 })
 export class UsersModule {
