@@ -5,13 +5,13 @@ import {UsersRoutingModule} from './users-routing.module';
 import {UsersLitComponent} from './users-lit/users-lit.component';
 import {UserComponent} from './user/user.component';
 import {
-  NbAccordionModule,
-  NbCardModule, NbChatModule,
-  NbIconModule,
-  NbListModule,
-  NbProgressBarModule, NbRouteTabsetModule,
-  NbTooltipModule,
-  NbUserModule
+    NbAccordionModule, NbButtonModule,
+    NbCardModule, NbChatModule,
+    NbIconModule,
+    NbListModule,
+    NbProgressBarModule, NbRouteTabsetModule,
+    NbTooltipModule,
+    NbUserModule
 } from '@nebular/theme';
 import {MatTableModule} from '@angular/material/table';
 import {NgxStarsModule} from 'ngx-stars';
@@ -22,6 +22,7 @@ import { StatsComponent } from './user/stats/stats.component';
 import {RoundProgressModule} from 'angular-svg-round-progressbar';
 import { TaskComponent } from './user/task/task.component';
 import { DailiesComponent } from './user/dailies/dailies.component';
+import {MatRippleModule} from '@angular/material/core';
 
 @NgModule({
   declarations: [UsersLitComponent, UserComponent, TasksComponent, StatsComponent, TaskComponent, DailiesComponent],
@@ -42,6 +43,8 @@ import { DailiesComponent } from './user/dailies/dailies.component';
     MatButtonToggleModule,
     MatInputModule,
     RoundProgressModule,
+    NbButtonModule,
+    MatRippleModule,
   ],
 })
 export class UsersModule {

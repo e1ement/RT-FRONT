@@ -11,11 +11,16 @@ export class TaskComponent implements OnInit {
   @Input() task: Task;
   @Input() user: User;
   descriptionLang: string = 'en';
+  revealed = false;
 
   constructor() {
   }
 
   ngOnInit(): void {
+  }
+
+  toggleView() {
+    this.revealed = !this.revealed;
   }
 
 }

@@ -1,155 +1,324 @@
-<div class="row d-flex mb-2">
-  <div class="col-12 d-flex align-items-center">
-    <h6 class="mr-2">Описание</h6>
-    <mat-button-toggle-group>
-      <mat-button-toggle (change)="descriptionLang = 'en'" [checked]="true">En</mat-button-toggle>
-      <mat-button-toggle (change)="descriptionLang = 'ru'">Ru</mat-button-toggle>
-    </mat-button-toggle-group>
-  </div>
-</div>
-<div class="row mb-4">
-  <div class="col-12">
-    {{ descriptionLang === 'en' ? task.descriptionEn : task.descriptionRu }}
-  </div>
-</div>
-
-<div class="row d-flex mb-2">
-  <div class="col-12 d-flex align-items-center">
-    <h6 class="mr-2">Текст задачи</h6>
-  </div>
-</div>
-<div class="row mb-4">
-  <div class="col-12">
-    {{ task.text }}
-  </div>
-</div>
+<ng-container *ngIf="!task.isCompleted">
+  <nb-card>
+    <nb-card-body *ngTemplateOutlet="description"></nb-card-body>
+  </nb-card>
+</ng-container>
 
 <ng-container *ngIf="task.isCompleted">
-  <h5>Result</h5>
+  <nb-reveal-card [showToggleButton]="false" [revealed]="revealed">
+    <nb-card-front>
+      <nb-card>
+        <nb-card-body *ngTemplateOutlet="result"></nb-card-body>
+        <nb-card-footer class="d-flex">
+          <button style="margin-left: auto;" nbButton matRipple status="primary" outline (click)="toggleView()">
+            Описание
+          </button>
+        </nb-card-footer>
+      </nb-card>
+    </nb-card-front>
 
-  <ng-container>
-    <div class="wrapper">
-      <round-progress
-        [current]="78"
-        [max]="100"
-        [color]="'#50D2C2'"
-        [background]="'#F2F2F2'"
-        [radius]="100"
-        [stroke]="2"
-        [semicircle]="false"
-        [rounded]="true"
-        [clockwise]="true"
-        [responsive]="false"
-        [duration]="800"
-        [animation]="'easeInOutQuart'"
-        [animationDelay]="400"
-      >
-      </round-progress>
+    <nb-card-back style="height: 100%;background: white;">
+      <nb-card style="height: 100%;">
+        <nb-card-body style="height: 100%;" *ngTemplateOutlet="description"></nb-card-body>
+        <nb-card-footer class="d-flex">
+          <button style="margin-left: auto;" nbButton matRipple status="primary" outline (click)="toggleView()">
+            Результат
+          </button>
+        </nb-card-footer>
+      </nb-card>
+    </nb-card-back>
 
-      <round-progress
-        [current]="34"
-        [max]="100"
-        [color]="'#FCAB53'"
-        [background]="'#F2F2F2'"
-        [radius]="70"
-        [stroke]="2"
-        [semicircle]="false"
-        [rounded]="true"
-        [clockwise]="true"
-        [responsive]="false"
-        [duration]="800"
-        [animation]="'easeInOutQuart'"
-        [animationDelay]="400"
-      >
-
-      </round-progress>
-
-      <round-progress
-        [current]="97"
-        [max]="100"
-        [color]="'#8C88FF'"
-        [background]="'#F2F2F2'"
-        [radius]="40"
-        [stroke]="2"
-        [semicircle]="false"
-        [rounded]="true"
-        [clockwise]="true"
-        [responsive]="false"
-        [duration]="800"
-        [animation]="'easeInOutQuart'"
-        [animationDelay]="400"
-      >
-
-      </round-progress>
-
-      <img [src]="user.picture">
-    </div>
-    <div class="stats mt-4 mb-4">
-      <div class="item">
-        <div class="dot relevance">
-        </div>
-        <span class="number mt-4 mb-4">78</span>
-        <span class="title">Релевантность</span>
-      </div>
-      <div class="item">
-        <div class="dot purity">
-        </div>
-        <span class="number mt-4 mb-4">34</span>
-        <span class="title">Чситота речи</span>
-      </div>
-      <div class="item">
-        <div class="dot vocabulary">
-        </div>
-        <span class="number mt-4 mb-4">97</span>
-        <span class="title">Словарный запас</span>
-      </div>
-    </div>
-
-  </ng-container>
-
-  <ng-container *ngIf="task.dialog && task.dialog.length">
-    <div class="row d-flex mb-2">
-      <div class="col-12 d-flex align-items-center">
-        <h6 class="mr-2">Лог чата</h6>
-      </div>
-    </div>
-    <nb-chat status="info" title="Result dialog" class="mb-4" size="small">
-      <nb-chat-message
-        *ngFor="let msg of task.dialog"
-        [type]="'text'"
-        [message]="msg.message"
-        [reply]="!msg.isUserMessage"
-        [sender]="msg.isUserMessage ? 'User' : 'Bot'"
-        [avatar]="msg.isUserMessage ? user.picture : null"
-      >
-      </nb-chat-message>
-    </nb-chat>
-  </ng-container>
-
-  <ng-container *ngIf="task.aiRecommendation">
-    <div class="row d-flex mb-2">
-      <div class="col-12 d-flex align-items-center">
-        <h6 class="mr-2">Рекомендации AI</h6>
-      </div>
-    </div>
-    <div class="row mb-4">
-      <div class="col-12">
-        {{ task.aiRecommendation }}
-      </div>
-    </div>
-  </ng-container>
-
-
-  <div class="row d-flex mb-2">
-    <div class="col-12 d-flex align-items-center">
-      <h6 class="mr-2">Ваши рекомендации</h6>
-    </div>
-  </div>
-  <div class="row mb-4">
-    <div class="col-12">
-      <mat-form-field class="textarea">
-        <textarea matInput placeholder="" rows="5">{{ task.tutorRecommendation }}</textarea>
-      </mat-form-field>
-    </div>
-  </div>
+  </nb-reveal-card>
 </ng-container>
+
+
+<ng-template #description>
+  <div style="padding: 1.25rem; height: 100%;">
+    <div class="row">
+      <div class="col-6">
+        <div class="row d-flex mb-2">
+          <div class="col-12 d-flex align-items-center">
+            <h6 class="mr-2">Описание</h6>
+            <mat-button-toggle-group>
+              <mat-button-toggle (change)="descriptionLang = 'en'" [checked]="true">En</mat-button-toggle>
+              <mat-button-toggle (change)="descriptionLang = 'ru'">Ru</mat-button-toggle>
+            </mat-button-toggle-group>
+          </div>
+        </div>
+        <div class="row mb-4">
+          <div class="col-12">
+            {{ descriptionLang === 'en' ? task.descriptionEn : task.descriptionRu }}
+          </div>
+        </div>
+
+        <div class="row d-flex mb-2">
+          <div class="col-12 d-flex align-items-center">
+            <h6 class="mr-2">Текст задачи</h6>
+          </div>
+        </div>
+        <div class="row mb-4">
+          <div class="col-12">
+            {{ task.text }}
+          </div>
+        </div>
+      </div>
+      <div class="col-6">
+        <ng-container>
+          <div class="wrapper">
+            <round-progress
+              [current]="78"
+              [max]="100"
+              [color]="'#50D2C2'"
+              [background]="'#F2F2F2'"
+              [radius]="100"
+              [stroke]="2"
+              [semicircle]="false"
+              [rounded]="true"
+              [clockwise]="true"
+              [responsive]="false"
+              [duration]="800"
+              [animation]="'easeInOutQuart'"
+              [animationDelay]="400"
+            >
+            </round-progress>
+
+            <round-progress
+              [current]="34"
+              [max]="100"
+              [color]="'#FCAB53'"
+              [background]="'#F2F2F2'"
+              [radius]="70"
+              [stroke]="2"
+              [semicircle]="false"
+              [rounded]="true"
+              [clockwise]="true"
+              [responsive]="false"
+              [duration]="800"
+              [animation]="'easeInOutQuart'"
+              [animationDelay]="400"
+            >
+
+            </round-progress>
+
+            <round-progress
+              [current]="97"
+              [max]="100"
+              [color]="'#8C88FF'"
+              [background]="'#F2F2F2'"
+              [radius]="40"
+              [stroke]="2"
+              [semicircle]="false"
+              [rounded]="true"
+              [clockwise]="true"
+              [responsive]="false"
+              [duration]="800"
+              [animation]="'easeInOutQuart'"
+              [animationDelay]="400"
+            >
+
+            </round-progress>
+
+            <img [src]="user.picture">
+          </div>
+          <div class="stats mt-4 mb-4">
+            <div class="item">
+              <div class="dot relevance">
+              </div>
+              <span class="number mt-4 mb-4">78</span>
+              <span class="title">Релевантность</span>
+            </div>
+            <div class="item">
+              <div class="dot purity">
+              </div>
+              <span class="number mt-4 mb-4">34</span>
+              <span class="title">Чистота речи</span>
+            </div>
+            <div class="item">
+              <div class="dot vocabulary">
+              </div>
+              <span class="number mt-4 mb-4">97</span>
+              <span class="title">Словарный запас</span>
+            </div>
+          </div>
+
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+
+<ng-template #result>
+  <div style="padding: 1.25rem;">
+
+    <div class="row">
+
+      <div class="col-6">
+        <div class="row">
+          <div class="col-12 d-flex justify-content-center align-items-center flex-column">
+            <ng-container>
+              <div class="wrapper">
+                <round-progress
+                  [current]="78"
+                  [max]="100"
+                  [color]="'#50D2C2'"
+                  [background]="'#F2F2F2'"
+                  [radius]="100"
+                  [stroke]="2"
+                  [semicircle]="false"
+                  [rounded]="true"
+                  [clockwise]="true"
+                  [responsive]="false"
+                  [duration]="800"
+                  [animation]="'easeInOutQuart'"
+                  [animationDelay]="400"
+                >
+                </round-progress>
+
+                <round-progress
+                  [current]="34"
+                  [max]="100"
+                  [color]="'#FCAB53'"
+                  [background]="'#F2F2F2'"
+                  [radius]="70"
+                  [stroke]="2"
+                  [semicircle]="false"
+                  [rounded]="true"
+                  [clockwise]="true"
+                  [responsive]="false"
+                  [duration]="800"
+                  [animation]="'easeInOutQuart'"
+                  [animationDelay]="400"
+                >
+
+                </round-progress>
+
+                <round-progress
+                  [current]="97"
+                  [max]="100"
+                  [color]="'#8C88FF'"
+                  [background]="'#F2F2F2'"
+                  [radius]="40"
+                  [stroke]="2"
+                  [semicircle]="false"
+                  [rounded]="true"
+                  [clockwise]="true"
+                  [responsive]="false"
+                  [duration]="800"
+                  [animation]="'easeInOutQuart'"
+                  [animationDelay]="400"
+                >
+
+                </round-progress>
+
+                <img [src]="user.picture">
+              </div>
+              <div class="stats mt-2 mb-2">
+                <div class="item">
+                  <div class="dot relevance">
+                  </div>
+                  <span class="number mt-3 mb-3">78</span>
+                  <span class="title">Релевантность</span>
+                </div>
+                <div class="item">
+                  <div class="dot purity">
+                  </div>
+                  <span class="number mt-3 mb-3">34</span>
+                  <span class="title">Чистота речи</span>
+                </div>
+                <div class="item">
+                  <div class="dot vocabulary">
+                  </div>
+                  <span class="number mt-3 mb-3">97</span>
+                  <span class="title">Словарный запас</span>
+                </div>
+              </div>
+
+            </ng-container>
+          </div>
+          <div class="col-12 d-flex justify-content-center align-items-center flex-column mt-4">
+            <ng-container>
+              <nb-chat status="info" title="Лог общения с AI" size="small">
+                <nb-chat-message
+                  *ngFor="let msg of task.dialog"
+                  [type]="'text'"
+                  [message]="msg.message"
+                  [reply]="!msg.isUserMessage"
+                  [sender]="msg.isUserMessage ? 'User' : 'Bot'"
+                  [avatar]="msg.isUserMessage ? user.picture : null"
+                >
+                </nb-chat-message>
+              </nb-chat>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="row d-flex mb-2">
+          <div class="col-12 d-flex align-items-center">
+            <h6 class="mr-2">Фонетический анализ</h6>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12 d-flex flex-column">
+            <div class="d-flex flex-column">
+              <h5>H<span style="color: #b00020">e</span>llo</h5>
+              <div>Вы произенсли: <b>h<span style="color: #b00020">ɑ</span>loʊ</b></div>
+              <audio controls class="mt-1 mb-3"></audio>
+              <div>Правильное произношение: <b>h<span style="color: #60af20">əˈ</span>loʊ</b></div>
+              <audio controls class="mt-1 mb-3"></audio>
+            </div>
+
+            <div class="d-flex flex-column mt-2">
+              <h5>My n<span style="color: #b00020">ame</span> is Vova</h5>
+              <div>Вы произенсли: <b>n<span style="color: #b00020">ɑˈmɛ</span></b></div>
+              <audio controls class="mt-1 mb-3"></audio>
+              <div>Правильное произношение: <b>n<span style="color: #60af20">eɪm</span></b></div>
+              <audio controls class="mt-1 mb-3"></audio>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <ng-container *ngIf="task.aiRecommendation">
+              <div class="row d-flex mb-2">
+                <div class="col-12 d-flex align-items-center">
+                  <h6 class="mr-2">Рекомендации AI</h6>
+                </div>
+              </div>
+              <div class="row mb-4">
+                <div class="col-12">
+                  {{ task.aiRecommendation }}
+                </div>
+              </div>
+            </ng-container>
+
+
+            <div class="row d-flex mb-2">
+              <div class="col-12 d-flex align-items-center">
+                <h6 class="mr-2">Ваши рекомендации</h6>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <mat-form-field class="textarea">
+                  <textarea matInput placeholder="" rows="3">{{ task.tutorRecommendation }}</textarea>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+  </div>
+
+
+</ng-template>
