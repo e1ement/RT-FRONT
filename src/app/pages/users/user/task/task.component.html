@@ -24,8 +24,89 @@
   </div>
 </div>
 
-<ng-container>
+<ng-container *ngIf="task.isCompleted">
   <h5>Result</h5>
+
+  <ng-container>
+    <div class="wrapper">
+      <round-progress
+        [current]="78"
+        [max]="100"
+        [color]="'#50D2C2'"
+        [background]="'#F2F2F2'"
+        [radius]="100"
+        [stroke]="2"
+        [semicircle]="false"
+        [rounded]="true"
+        [clockwise]="true"
+        [responsive]="false"
+        [duration]="800"
+        [animation]="'easeInOutQuart'"
+        [animationDelay]="400"
+      >
+      </round-progress>
+
+      <round-progress
+        [current]="34"
+        [max]="100"
+        [color]="'#FCAB53'"
+        [background]="'#F2F2F2'"
+        [radius]="70"
+        [stroke]="2"
+        [semicircle]="false"
+        [rounded]="true"
+        [clockwise]="true"
+        [responsive]="false"
+        [duration]="800"
+        [animation]="'easeInOutQuart'"
+        [animationDelay]="400"
+      >
+
+      </round-progress>
+
+      <round-progress
+        [current]="97"
+        [max]="100"
+        [color]="'#8C88FF'"
+        [background]="'#F2F2F2'"
+        [radius]="40"
+        [stroke]="2"
+        [semicircle]="false"
+        [rounded]="true"
+        [clockwise]="true"
+        [responsive]="false"
+        [duration]="800"
+        [animation]="'easeInOutQuart'"
+        [animationDelay]="400"
+      >
+
+      </round-progress>
+
+      <img [src]="user.picture">
+    </div>
+    <div class="stats mt-4 mb-4">
+      <div class="item">
+        <div class="dot relevance">
+        </div>
+        <span class="number mt-4 mb-4">78</span>
+        <span class="title">Релевантность</span>
+      </div>
+      <div class="item">
+        <div class="dot purity">
+        </div>
+        <span class="number mt-4 mb-4">34</span>
+        <span class="title">Чситота речи</span>
+      </div>
+      <div class="item">
+        <div class="dot vocabulary">
+        </div>
+        <span class="number mt-4 mb-4">97</span>
+        <span class="title">Словарный запас</span>
+      </div>
+    </div>
+
+  </ng-container>
+
   <ng-container *ngIf="task.dialog && task.dialog.length">
     <div class="row d-flex mb-2">
       <div class="col-12 d-flex align-items-center">
