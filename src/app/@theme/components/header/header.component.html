@@ -1,0 +1,46 @@
+<div class="header-container">
+  <div class="logo-container">
+    <a
+      href="#"
+      class="sidebar-toggle"
+      matRipple
+      [matRippleUnbounded]="true"
+      [matRippleCentered]="true"
+      (click)="toggleSidebar()"
+    >
+      <nb-icon [icon]="(materialTheme$ | async) ? 'menu-outline' : 'menu-2-outline'"></nb-icon>
+    </a>
+    <a class="logo" href="#" (click)="navigateHome()">
+      <img src="/assets/images/Foxlearn.svg">
+      Talky<span>Foxy</span>
+    </a>
+  </div>
+</div>
+
+<div class="header-container">
+  <nb-actions size="small">
+    <nb-action
+      class="control-item mr-1"
+      icon="bell-outline"
+      matRipple
+      badgeText="42"
+      badgePosition="top right"
+      badgeStatus="warning"
+      [matRippleUnbounded]="true"
+      [matRippleCentered]="true"
+      [nbContextMenu]="notifications"
+    ></nb-action>
+    <nb-action
+      class="user-action"
+      *nbIsGranted="['view', 'user']"
+      matRipple
+      [matRippleUnbounded]="true"
+      [matRippleCentered]="true">
+      <nb-user [nbContextMenu]="userMenu"
+               [onlyPicture]="userPictureOnly"
+               [name]="user?.name"
+               [picture]="user?.picture">
+      </nb-user>
+    </nb-action>
+  </nb-actions>
+</div>
