@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {User} from '../../models/user.model';
+import {User, Task} from '../../models/user.model';
 
 @Component({
   selector: 'ngx-tasks',
@@ -9,13 +9,14 @@ import {User} from '../../models/user.model';
 })
 export class TasksComponent implements OnInit {
   user: User;
-  descriptionLang: string = 'en';
+  tasks: Task[];
 
   constructor(private activatedRoute: ActivatedRoute) {
   }
 
   ngOnInit(): void {
     this.user = this.activatedRoute.parent.snapshot.data.user;
+    this.tasks = this.user.tasks;
   }
 
 }

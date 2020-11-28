@@ -22,10 +22,6 @@ export class UserComponent implements OnInit {
       title: 'Дэйлики',
       route: './dailies',
     },
-    {
-      title: 'История',
-      route: './history',
-    },
   ];
 
   constructor(private activatedRoute: ActivatedRoute) {

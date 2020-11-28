@@ -20,9 +20,11 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatInputModule} from '@angular/material/input';
 import { StatsComponent } from './user/stats/stats.component';
 import {RoundProgressModule} from 'angular-svg-round-progressbar';
+import { TaskComponent } from './user/task/task.component';
+import { DailiesComponent } from './user/dailies/dailies.component';
 
 @NgModule({
-  declarations: [UsersLitComponent, UserComponent, TasksComponent, StatsComponent],
+  declarations: [UsersLitComponent, UserComponent, TasksComponent, StatsComponent, TaskComponent, DailiesComponent],
   imports: [
     CommonModule,
     UsersRoutingModule,

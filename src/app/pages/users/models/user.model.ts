@@ -39,7 +39,7 @@ export interface Category {
 
 export interface Task {
   taskId: number;
-  category: Category;
+  category?: Category;
   titleRu: string;
   titleEn: string;
   descriptionRu: string;
