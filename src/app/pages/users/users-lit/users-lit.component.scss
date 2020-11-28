@@ -1,27 +1,46 @@
 table {
   width: 100%;
+  th {
+
+  }
  tr {
    cursor: pointer;
    &:focus {
      outline: none;
    }
+
+   th {
+     &.mat-column {
+
+       &-paymentLevel {
+         text-align: center;
+       }
+
+       &-notification {
+         text-align: center;
+       }
+
+       &-level {
+         text-align: center;
+       }
+     }
+   }
+
    td {
      padding: 1rem;
 
      &.mat-column {
        &-user {
-         width: 200px;
+         width: 300px;
        }
 
        &-paymentLevel {
-         width: 100px;
+         width: 150px;
+         text-align: center;
        }
 
        &-notification {
-         width: 100px;
-       }
-
-       &-paymentLevel {
+         text-align: center;
          width: 100px;
        }
 

@@ -15,7 +15,7 @@ if (isDevMode()) {
       link: '/pages/iot-dashboard',
     },
     {
-      title: 'Users',
+      title: 'Пользователи',
       icon: 'people-outline',
       link: '/pages/users',
       home: true,
@@ -256,7 +256,7 @@ if (isDevMode()) {
 } else {
   menu = [
     {
-      title: 'Users',
+      title: 'Пользователи',
       icon: 'people-outline',
       link: '/pages/users',
       home: true,

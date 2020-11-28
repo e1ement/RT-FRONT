@@ -1,0 +1,87 @@
+<nb-accordion [multi]="true" class="mt-2">
+  <nb-accordion-item *ngFor="let task of user.tasks">
+    <nb-accordion-item-header>
+      <span
+        [class]="{ 'mr-2': true, 'completed': task.isCompleted }"
+      ></span>
+      {{ task.titleRu + ' | ' + task.category.titleRu }}
+    </nb-accordion-item-header>
+    <nb-accordion-item-body>
+      <div class="row d-flex mb-2">
+        <div class="col-12 d-flex align-items-center">
+          <h6 class="mr-2">Описание</h6>
+          <mat-button-toggle-group>
+            <mat-button-toggle (change)="descriptionLang = 'en'" [checked]="true">En</mat-button-toggle>
+            <mat-button-toggle (change)="descriptionLang = 'ru'">Ru</mat-button-toggle>
+          </mat-button-toggle-group>
+        </div>
+      </div>
+      <div class="row mb-4">
+        <div class="col-12">
+          {{ descriptionLang === 'en' ? task.descriptionEn : task.descriptionRu }}
+        </div>
+      </div>
+
+      <div class="row d-flex mb-2">
+        <div class="col-12 d-flex align-items-center">
+          <h6 class="mr-2">Текст задачи</h6>
+        </div>
+      </div>
+      <div class="row mb-4">
+        <div class="col-12">
+          {{ task.text }}
+        </div>
+      </div>
+
+      <ng-container>
+        <h5>Result</h5>
+        <ng-container *ngIf="task.dialog && task.dialog.length">
+          <div class="row d-flex mb-2">
+            <div class="col-12 d-flex align-items-center">
+              <h6 class="mr-2">Лог чата</h6>
+            </div>
+          </div>
+          <nb-chat status="info" title="Result dialog" class="mb-4" size="small">
+            <nb-chat-message
+              *ngFor="let msg of task.dialog; index as i"
+              [type]="'text'"
+              [message]="msg.message"
+              [reply]="i % 2 === 0"
+              [sender]="msg.isUserMessage ? 'User' : 'Bot'"
+              [avatar]="msg.isUserMessage ? user.picture : null"
+            >
+            </nb-chat-message>
+          </nb-chat>
+        </ng-container>
+
+        <ng-container *ngIf="task.aiRecommendation">
+          <div class="row d-flex mb-2">
+            <div class="col-12 d-flex align-items-center">
+              <h6 class="mr-2">Рекомендации AI</h6>
+            </div>
+          </div>
+          <div class="row mb-4">
+            <div class="col-12">
+              {{ task.aiRecommendation }}
+            </div>
+          </div>
+        </ng-container>
+
+
+        <div class="row d-flex mb-2">
+          <div class="col-12 d-flex align-items-center">
+            <h6 class="mr-2">Ваши рекомендации</h6>
+          </div>
+        </div>
+        <div class="row mb-4">
+          <div class="col-12">
+            <mat-form-field class="textarea">
+              <textarea matInput placeholder="" rows="5">{{ task.tutorRecommendation }}</textarea>
+            </mat-form-field>
+          </div>
+        </div>
+      </ng-container>
+
+    </nb-accordion-item-body>
+  </nb-accordion-item>
+</nb-accordion>

@@ -9,6 +9,24 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class UserComponent implements OnInit {
   user: User;
+  tabs: any[] = [
+    {
+      title: 'Статистика',
+      route: './stats',
+    },
+    {
+      title: 'Задачи',
+      route: './tasks',
+    },
+    {
+      title: 'Дэйлики',
+      route: './dailies',
+    },
+    {
+      title: 'История',
+      route: './history',
+    },
+  ];
 
   constructor(private activatedRoute: ActivatedRoute) {
   }

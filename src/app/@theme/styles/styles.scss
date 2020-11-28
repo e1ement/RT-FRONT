@@ -53,3 +53,10 @@
     color: #60af20 !important;
   }
 }
+body * {
+  outline: none !important;
+}
+
+.nb-theme-material-light nb-context-menu {
+  max-width: 25rem !important;
+}

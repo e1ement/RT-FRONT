@@ -26,10 +26,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
   currentTheme = 'material-light';
   userMenu = [{title: 'Profile'}, {title: 'Log out'}];
   notifications = [
-    {title: 'Eva Moor needs your help!', icon: {icon: 'person-outline', status: 'warning'}},
-    {title: 'Dialog with Lee Wong soon!', icon: {icon: 'alert-triangle-outline', status: 'danger'}},
-    {title: 'Jack Williams pass task', icon: {icon: 'award-outline', status: 'success'}},
-    {title: 'New appeal from Jack Williams', icon: {icon: 'person-outline', status: 'warning'}},
+    {title: 'Елизавета Сергеева просит вашей помощи!', icon: {icon: 'person-outline', status: 'warning'}},
+    {title: 'Скоро диалог с Lee Wong!!!', icon: {icon: 'alert-triangle-outline', status: 'danger'}},
+    {title: 'Сергей Попов прошел задание', icon: {icon: 'award-outline', status: 'success'}},
+    {title: 'Богдан Марков подал на аппеляцию!', icon: {icon: 'person-outline', status: 'warning'}},
   ];
   private destroy$: Subject<void> = new Subject<void>();
 
