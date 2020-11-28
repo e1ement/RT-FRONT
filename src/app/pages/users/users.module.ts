@@ -11,7 +11,7 @@ import {
     NbListModule,
     NbProgressBarModule, NbRouteTabsetModule,
     NbTooltipModule,
-    NbUserModule
+    NbUserModule,
 } from '@nebular/theme';
 import {MatTableModule} from '@angular/material/table';
 import {NgxStarsModule} from 'ngx-stars';

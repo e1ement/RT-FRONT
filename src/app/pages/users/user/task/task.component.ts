@@ -4,7 +4,7 @@ import {Task, User} from '../../models/user.model';
 @Component({
   selector: 'ngx-task',
   templateUrl: './task.component.html',
-  styleUrls: ['./task.component.scss']
+  styleUrls: ['./task.component.scss'],
 })
 export class TaskComponent implements OnInit {
 
