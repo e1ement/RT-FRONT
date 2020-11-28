@@ -18,7 +18,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'tasks',
+        redirectTo: 'stats',
         pathMatch: 'full',
       },
       {
@@ -32,10 +32,6 @@ const routes: Routes = [
       {
         path: 'stats',
         component: StatsComponent,
-      },
-      {
-        path: 'history',
-        component: TasksComponent,
       },
     ],
   },
