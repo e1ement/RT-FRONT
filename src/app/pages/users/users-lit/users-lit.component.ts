@@ -1,8 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {RecentUsers, UserData} from '../../../@core/data/users';
-import {takeUntil} from 'rxjs/operators';
 import {Subject} from 'rxjs';
-import {MatTableDataSource} from '@angular/material/table';
 import {ColorsEnum, LevelsEnum, NotificationsEnum, PaymentLevelEnum, User} from '../models/user.model';
 import {ActivatedRoute} from '@angular/router';
 import {NbIconLibraries} from '@nebular/theme';
@@ -20,16 +17,6 @@ export class UsersLitComponent implements OnInit, OnDestroy {
   notificationsEnum = NotificationsEnum;
   paymentLevelEnum = PaymentLevelEnum;
   private unsubscribe$: Subject<void> = new Subject();
-
-  /*constructor(iconsLibrary: NbIconLibraries) {
-    this.evaIcons = Array.from(iconsLibrary.getPack('eva').icons.keys())
-      .filter(icon => icon.indexOf('outline') === -1);
-
-    iconsLibrary.registerFontPack('fa', { packClass: 'fa', iconClassPrefix: 'fa' });
-    iconsLibrary.registerFontPack('far', { packClass: 'far', iconClassPrefix: 'fa' });
-    iconsLibrary.registerFontPack('ion', { iconClassPrefix: 'ion' });
-  }*/
-
 
   constructor(private activatedRoute: ActivatedRoute, iconsLibrary: NbIconLibraries) {
     iconsLibrary.registerFontPack('fa', { packClass: 'fa', iconClassPrefix: 'fa' });
