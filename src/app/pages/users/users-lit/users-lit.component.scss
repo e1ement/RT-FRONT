@@ -1,13 +1,58 @@
 table {
   width: 100%;
-  td {
-    padding: 1rem;
-    ngx-stars::ng-deep {
-      .stars-line {
-        display: inline-flex;
-      }
-    }
-  }
+ tr {
+   cursor: pointer;
+   &:focus {
+     outline: none;
+   }
+   td {
+     padding: 1rem;
+
+     &.mat-column {
+       &-user {
+         width: 200px;
+       }
+
+       &-paymentLevel {
+         width: 100px;
+       }
+
+       &-notification {
+         width: 100px;
+       }
+
+       &-paymentLevel {
+         width: 100px;
+       }
+
+       &-level {
+         width: 150px;
+       }
+     }
+
+     &.payment-level-cell {
+       text-align: center;
+
+       nb-icon {
+         font-size: 24px;
+
+         &.fa-crown {
+           color: #ffd700 !important;
+         }
+
+         &.fa-dollar-sign {
+           color: #85bb65 !important;
+         }
+       }
+     }
+
+     ngx-stars::ng-deep {
+       .stars-line {
+         display: inline-flex;
+       }
+     }
+   }
+ }
 }
 
 .notify {
@@ -15,12 +60,6 @@ table {
 }
 
 @keyframes ring {
-  /*0% {
-    transform: rotate(35deg);
-  }
-  12.5% {
-    transform: rotate(-30deg);
-  }*/
   25% {
     transform: rotate(25deg);
   }

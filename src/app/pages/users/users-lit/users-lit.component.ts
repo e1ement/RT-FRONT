@@ -3,26 +3,9 @@ import {RecentUsers, UserData} from '../../../@core/data/users';
 import {takeUntil} from 'rxjs/operators';
 import {Subject} from 'rxjs';
 import {MatTableDataSource} from '@angular/material/table';
-
-enum LevelsEnum {
-  'Null',
-  'Beginner',
-  'Elementary',
-  'Intermediate',
-  'Upper-Intermediate',
-  'Advanced',
-  'Proficiency',
-}
-
-enum ColorsEnum {
-  'Null' = '#b00020',
-  'Beginner' = '#ff9f05',
-  'Elementary' = '#ff9f05',
-  'Intermediate' = '#0495ee',
-  'Upper-Intermediate' = '#0495ee',
-  'Advanced' = '#60af20',
-  'Proficiency' = '#60af20',
-}
+import {ColorsEnum, LevelsEnum, NotificationsEnum, PaymentLevelEnum, User} from '../models/user.model';
+import {ActivatedRoute} from '@angular/router';
+import {NbIconLibraries} from '@nebular/theme';
 
 @Component({
   selector: 'ngx-users-lit',
@@ -30,14 +13,26 @@ enum ColorsEnum {
   styleUrls: ['./users-lit.component.scss'],
 })
 export class UsersLitComponent implements OnInit, OnDestroy {
-  users: RecentUsers[];
-  dataSource = new MatTableDataSource<RecentUsers>([]);
-  displayedColumns: string[] = ['user', 'notification', 'level', 'progress'];
+  users: User[];
+  displayedColumns: string[] = ['user', 'paymentLevel', 'notification', 'level', 'progress'];
   levelsEnum = LevelsEnum;
   colorsEnum = ColorsEnum;
+  notificationsEnum = NotificationsEnum;
+  paymentLevelEnum = PaymentLevelEnum;
   private unsubscribe$: Subject<void> = new Subject();
 
-  constructor(private userService: UserData) {
+  /*constructor(iconsLibrary: NbIconLibraries) {
+    this.evaIcons = Array.from(iconsLibrary.getPack('eva').icons.keys())
+      .filter(icon => icon.indexOf('outline') === -1);
+
+    iconsLibrary.registerFontPack('fa', { packClass: 'fa', iconClassPrefix: 'fa' });
+    iconsLibrary.registerFontPack('far', { packClass: 'far', iconClassPrefix: 'fa' });
+    iconsLibrary.registerFontPack('ion', { iconClassPrefix: 'ion' });
+  }*/
+
+
+  constructor(private activatedRoute: ActivatedRoute, iconsLibrary: NbIconLibraries) {
+    iconsLibrary.registerFontPack('fa', { packClass: 'fa', iconClassPrefix: 'fa' });
   }
 
   getStatus(value) {
@@ -53,10 +48,7 @@ export class UsersLitComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.userService.getRecentUsers().pipe(takeUntil(this.unsubscribe$)).subscribe(value => {
-      this.users = value;
-      this.dataSource = new MatTableDataSource<RecentUsers>(value);
-    });
+    this.users = this.activatedRoute.snapshot.data.users;
   }
 
   ngOnDestroy(): void {

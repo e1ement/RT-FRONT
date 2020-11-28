@@ -1,1 +1,10 @@
-<p>user works!</p>
+<nb-card>
+  <nb-card-header>
+    <nb-user [picture]="user.picture" [name]="user.name"
+             [title]="user.lastActivityTime | date:'dd MMM yy, hh:mm'">
+    </nb-user>
+  </nb-card-header>
+  <nb-card-body>
+    <pre>{{ user | json }}</pre>
+  </nb-card-body>
+</nb-card>

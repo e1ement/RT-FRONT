@@ -4,29 +4,38 @@
     <table mat-table [dataSource]="users">
       <ng-container matColumnDef="user">
         <th mat-header-cell *matHeaderCellDef>User</th>
-        <td mat-cell *matCellDef="let userItem">
-          <nb-user [picture]="userItem.user.picture" [name]="userItem.user.name"
-                   [title]="userItem.time | date:'dd MMM yy, hh:mm'">
+        <td mat-cell *matCellDef="let user">
+          <nb-user [picture]="user.picture" [name]="user.name"
+                   [title]="user.lastActivityTime | date:'dd MMM yy, hh:mm'">
           </nb-user>
         </td>
       </ng-container>
 
-<ng-container matColumnDef="notification">
+      <ng-container matColumnDef="paymentLevel">
+        <th mat-header-cell *matHeaderCellDef>Payment level</th>
+        <td class="payment-level-cell" mat-cell *matCellDef="let user">
+          <nb-icon *ngIf="user.paymentLevel" [icon]="paymentLevelEnum[user.paymentLevel]" pack="fa"></nb-icon>
+          <span *ngIf="!user.paymentLevel">FREE</span>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="notification">
         <th mat-header-cell *matHeaderCellDef>Notification</th>
-        <td mat-cell *matCellDef="let userItem">
-          <nb-icon class="notify" icon="bell-outline" *ngIf="userItem.notification" [status]="userItem.notification"></nb-icon>
+        <td mat-cell *matCellDef="let user">
+          <nb-icon class="notify" icon="bell-outline" *ngIf="user.notification"
+                   [status]="notificationsEnum[user.notification]"></nb-icon>
         </td>
       </ng-container>
 
       <ng-container matColumnDef="level">
         <th mat-header-cell *matHeaderCellDef>Language level</th>
-        <td mat-cell *matCellDef="let userItem">
+        <td mat-cell *matCellDef="let user">
           <ngx-stars
             [readonly]="true"
             [maxStars]="6"
-            [initialStars]="+levelsEnum[userItem.level]"
-            [color]="colorsEnum[userItem.level]"
-            [nbTooltip]="userItem.level"
+            [initialStars]="user.level + 1"
+            [color]="colorsEnum[user.level]"
+            [nbTooltip]="levelsEnum[user.level]"
           >
           </ngx-stars>
         </td>
@@ -34,14 +43,14 @@
 
       <ng-container matColumnDef="progress">
         <th mat-header-cell *matHeaderCellDef> Progress</th>
-        <td mat-cell *matCellDef="let userItem">
-          <nb-progress-bar [value]="userItem.progress" [status]="getStatus(userItem.progress)"
+        <td mat-cell *matCellDef="let user">
+          <nb-progress-bar [value]="user.progress" [status]="getStatus(user.progress)"
                            [displayValue]="true"></nb-progress-bar>
         </td>
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;" [routerLink]="['./' + row.id]"></tr>
     </table>
   </nb-card-body>
 </nb-card>
