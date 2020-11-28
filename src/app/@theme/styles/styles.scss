@@ -37,7 +37,9 @@
 
   @include nb-overrides();
   @include material-overrides();
-};
+}
+
+;
 
 
 .nb-theme-material-light nb-menu .menu-item .menu-icon {
@@ -53,6 +55,7 @@
     color: #60af20 !important;
   }
 }
+
 body * {
   outline: none !important;
 }

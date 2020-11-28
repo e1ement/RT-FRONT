@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {User, Task} from '../../models/user.model';
+import {Task, User} from '../../models/user.model';
 
 @Component({
   selector: 'ngx-tasks',

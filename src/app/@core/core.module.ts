@@ -1,19 +1,13 @@
-import { ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { MAT_RIPPLE_GLOBAL_OPTIONS } from '@angular/material/core';
-import { NbAuthModule, NbDummyAuthStrategy } from '@nebular/auth';
-import { NbSecurityModule, NbRoleProvider } from '@nebular/security';
-import { of as observableOf } from 'rxjs';
+import {ModuleWithProviders, NgModule, Optional, SkipSelf} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {MAT_RIPPLE_GLOBAL_OPTIONS} from '@angular/material/core';
+import {NbAuthModule, NbDummyAuthStrategy} from '@nebular/auth';
+import {NbRoleProvider, NbSecurityModule} from '@nebular/security';
+import {of as observableOf} from 'rxjs';
 
-import { throwIfAlreadyLoaded } from './module-import-guard';
-import {
-  AnalyticsService,
-  LayoutService,
-  PlayerService,
-  SeoService,
-  StateService,
-} from './utils';
-import { RippleService } from './utils/ripple.service';
+import {throwIfAlreadyLoaded} from './module-import-guard';
+import {AnalyticsService, LayoutService, PlayerService, SeoService, StateService,} from './utils';
+import {RippleService} from './utils/ripple.service';
 
 const socialLinks = [
   {

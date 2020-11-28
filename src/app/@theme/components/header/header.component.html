@@ -1,16 +1,16 @@
 <div class="header-container">
   <div class="logo-container">
     <a
-      href="#"
-      class="sidebar-toggle"
-      matRipple
-      [matRippleUnbounded]="true"
-      [matRippleCentered]="true"
       (click)="toggleSidebar()"
+      [matRippleCentered]="true"
+      [matRippleUnbounded]="true"
+      class="sidebar-toggle"
+      href="#"
+      matRipple
     >
       <nb-icon [icon]="(materialTheme$ | async) ? 'menu-outline' : 'menu-2-outline'"></nb-icon>
     </a>
-    <a class="logo" href="#" (click)="navigateHome()">
+    <a (click)="navigateHome()" class="logo" href="#">
       <img src="/assets/images/Foxlearn.svg">
       Talky<span>Foxy</span>
     </a>
@@ -20,25 +20,25 @@
 <div class="header-container">
   <nb-actions size="small">
     <nb-action
+      [matRippleCentered]="true"
+      [matRippleUnbounded]="true"
+      [nbContextMenu]="notifications"
+      badgePosition="top right"
+      badgeStatus="warning"
+      badgeText="42"
       class="control-item mr-1"
       icon="bell-outline"
       matRipple
-      badgeText="42"
-      badgePosition="top right"
-      badgeStatus="warning"
-      [matRippleUnbounded]="true"
-      [matRippleCentered]="true"
-      [nbContextMenu]="notifications"
     ></nb-action>
     <nb-action
-      class="user-action"
       *nbIsGranted="['view', 'user']"
-      matRipple
+      [matRippleCentered]="true"
       [matRippleUnbounded]="true"
-      [matRippleCentered]="true">
-      <nb-user [nbContextMenu]="userMenu"
+      class="user-action"
+      matRipple>
+      <nb-user [name]="user?.name"
+               [nbContextMenu]="userMenu"
                [onlyPicture]="userPictureOnly"
-               [name]="user?.name"
                [picture]="user?.picture">
       </nb-user>
     </nb-action>

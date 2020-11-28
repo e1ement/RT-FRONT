@@ -19,7 +19,7 @@ export class UsersLitComponent implements OnInit, OnDestroy {
   private unsubscribe$: Subject<void> = new Subject();
 
   constructor(private activatedRoute: ActivatedRoute, iconsLibrary: NbIconLibraries) {
-    iconsLibrary.registerFontPack('fa', { packClass: 'fa', iconClassPrefix: 'fa' });
+    iconsLibrary.registerFontPack('fa', {packClass: 'fa', iconClassPrefix: 'fa'});
   }
 
   getStatus(value) {

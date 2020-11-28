@@ -2,9 +2,9 @@
 @import '~@nebular/theme/styles/global/breakpoints';
 @import '../../styles/themes';
 
-  .status-warning {
-    color: #ff9f05 !important;
-  }
+.status-warning {
+  color: #ff9f05 !important;
+}
 
 
 @include nb-install-component() {

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {User} from '../../models/user.model';
 import {ActivatedRoute} from '@angular/router';
 
@@ -10,7 +10,8 @@ import {ActivatedRoute} from '@angular/router';
 export class StatsComponent implements OnInit {
   user: User;
 
-  constructor(private activatedRoute: ActivatedRoute) { }
+  constructor(private activatedRoute: ActivatedRoute) {
+  }
 
   ngOnInit(): void {
     this.user = this.activatedRoute.parent.snapshot.data.user;

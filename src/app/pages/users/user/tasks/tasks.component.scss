@@ -1,11 +1,13 @@
 nb-accordion-item-header {
   display: flex;
+
   span.dot {
     width: 8px;
     height: 8px;
     background-color: darkgrey;
     border-radius: 50%;
     display: flex;
+
     &.completed {
       background-color: #60af20;
     }
@@ -14,6 +16,7 @@ nb-accordion-item-header {
   .rt-points {
     margin-left: auto;
     margin-right: 50px;
+
     &.daily-success {
       color: #60af20;
     }

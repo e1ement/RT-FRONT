@@ -31,6 +31,7 @@ round-progress, img {
   display: flex;
   justify-content: space-between;
   width: 500px;
+
   .item {
     display: flex;
     flex-direction: column;
@@ -41,12 +42,15 @@ round-progress, img {
       width: 12px;
       height: 12px;
       border-radius: 50%;
+
       &.relevance {
         background-color: #50D2C2;
       }
+
       &.purity {
         background-color: #FCAB53;
       }
+
       &.vocabulary {
         background-color: #8C88FF;
       }

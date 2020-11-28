@@ -1,77 +1,80 @@
 table {
   width: 100%;
+
   th {
 
   }
- tr {
-   cursor: pointer;
-   &:focus {
-     outline: none;
-   }
 
-   th {
-     &.mat-column {
+  tr {
+    cursor: pointer;
 
-       &-paymentLevel {
-         text-align: center;
-       }
+    &:focus {
+      outline: none;
+    }
 
-       &-notification {
-         text-align: center;
-       }
+    th {
+      &.mat-column {
 
-       &-level {
-         text-align: center;
-       }
-     }
-   }
+        &-paymentLevel {
+          text-align: center;
+        }
 
-   td {
-     padding: 1rem;
+        &-notification {
+          text-align: center;
+        }
 
-     &.mat-column {
-       &-user {
-         width: 300px;
-       }
+        &-level {
+          text-align: center;
+        }
+      }
+    }
 
-       &-paymentLevel {
-         width: 150px;
-         text-align: center;
-       }
+    td {
+      padding: 1rem;
 
-       &-notification {
-         text-align: center;
-         width: 100px;
-       }
+      &.mat-column {
+        &-user {
+          width: 300px;
+        }
 
-       &-level {
-         width: 150px;
-       }
-     }
+        &-paymentLevel {
+          width: 150px;
+          text-align: center;
+        }
 
-     &.payment-level-cell {
-       text-align: center;
+        &-notification {
+          text-align: center;
+          width: 100px;
+        }
 
-       nb-icon {
-         font-size: 24px;
+        &-level {
+          width: 150px;
+        }
+      }
 
-         &.fa-crown {
-           color: #ffd700 !important;
-         }
+      &.payment-level-cell {
+        text-align: center;
 
-         &.fa-dollar-sign {
-           color: #85bb65 !important;
-         }
-       }
-     }
+        nb-icon {
+          font-size: 24px;
 
-     ngx-stars::ng-deep {
-       .stars-line {
-         display: inline-flex;
-       }
-     }
-   }
- }
+          &.fa-crown {
+            color: #ffd700 !important;
+          }
+
+          &.fa-dollar-sign {
+            color: #85bb65 !important;
+          }
+        }
+      }
+
+      ngx-stars::ng-deep {
+        .stars-line {
+          display: inline-flex;
+        }
+      }
+    }
+  }
 }
 
 .notify {

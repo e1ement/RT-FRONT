@@ -5,12 +5,12 @@
 </ng-container>
 
 <ng-container *ngIf="task.isCompleted">
-  <nb-reveal-card [showToggleButton]="false" [revealed]="revealed">
+  <nb-reveal-card [revealed]="revealed" [showToggleButton]="false">
     <nb-card-front>
       <nb-card>
         <nb-card-body *ngTemplateOutlet="result"></nb-card-body>
         <nb-card-footer class="d-flex">
-          <button style="margin-left: auto;" nbButton matRipple status="primary" outline (click)="toggleView()">
+          <button (click)="toggleView()" matRipple nbButton outline status="primary" style="margin-left: auto;">
             Описание
           </button>
         </nb-card-footer>
@@ -19,9 +19,9 @@
 
     <nb-card-back style="height: 100%;background: white;">
       <nb-card style="height: 100%;">
-        <nb-card-body style="height: 100%;" *ngTemplateOutlet="description"></nb-card-body>
+        <nb-card-body *ngTemplateOutlet="description" style="height: 100%;"></nb-card-body>
         <nb-card-footer class="d-flex">
-          <button style="margin-left: auto;" nbButton matRipple status="primary" outline (click)="toggleView()">
+          <button (click)="toggleView()" matRipple nbButton outline status="primary" style="margin-left: auto;">
             Результат
           </button>
         </nb-card-footer>
@@ -66,54 +66,54 @@
         <ng-container>
           <div class="wrapper">
             <round-progress
-              [current]="78"
-              [max]="100"
+              [animationDelay]="400"
+              [animation]="'easeInOutQuart'"
+              [background]="'#F2F2F2'"
+              [clockwise]="true"
               [color]="'#50D2C2'"
-              [background]="'#F2F2F2'"
+              [current]="78"
+              [duration]="800"
+              [max]="100"
               [radius]="100"
-              [stroke]="2"
-              [semicircle]="false"
-              [rounded]="true"
-              [clockwise]="true"
               [responsive]="false"
-              [duration]="800"
-              [animation]="'easeInOutQuart'"
-              [animationDelay]="400"
+              [rounded]="true"
+              [semicircle]="false"
+              [stroke]="2"
             >
             </round-progress>
 
             <round-progress
-              [current]="34"
-              [max]="100"
+              [animationDelay]="400"
+              [animation]="'easeInOutQuart'"
+              [background]="'#F2F2F2'"
+              [clockwise]="true"
               [color]="'#FCAB53'"
-              [background]="'#F2F2F2'"
-              [radius]="70"
-              [stroke]="2"
-              [semicircle]="false"
-              [rounded]="true"
-              [clockwise]="true"
-              [responsive]="false"
+              [current]="34"
               [duration]="800"
-              [animation]="'easeInOutQuart'"
-              [animationDelay]="400"
+              [max]="100"
+              [radius]="70"
+              [responsive]="false"
+              [rounded]="true"
+              [semicircle]="false"
+              [stroke]="2"
             >
 
             </round-progress>
 
             <round-progress
-              [current]="97"
-              [max]="100"
-              [color]="'#8C88FF'"
-              [background]="'#F2F2F2'"
-              [radius]="40"
-              [stroke]="2"
-              [semicircle]="false"
-              [rounded]="true"
-              [clockwise]="true"
-              [responsive]="false"
-              [duration]="800"
-              [animation]="'easeInOutQuart'"
               [animationDelay]="400"
+              [animation]="'easeInOutQuart'"
+              [background]="'#F2F2F2'"
+              [clockwise]="true"
+              [color]="'#8C88FF'"
+              [current]="97"
+              [duration]="800"
+              [max]="100"
+              [radius]="40"
+              [responsive]="false"
+              [rounded]="true"
+              [semicircle]="false"
+              [stroke]="2"
             >
 
             </round-progress>
@@ -159,54 +159,54 @@
             <ng-container>
               <div class="wrapper">
                 <round-progress
-                  [current]="78"
-                  [max]="100"
+                  [animationDelay]="400"
+                  [animation]="'easeInOutQuart'"
+                  [background]="'#F2F2F2'"
+                  [clockwise]="true"
                   [color]="'#50D2C2'"
-                  [background]="'#F2F2F2'"
+                  [current]="78"
+                  [duration]="800"
+                  [max]="100"
                   [radius]="100"
-                  [stroke]="2"
-                  [semicircle]="false"
-                  [rounded]="true"
-                  [clockwise]="true"
                   [responsive]="false"
-                  [duration]="800"
-                  [animation]="'easeInOutQuart'"
-                  [animationDelay]="400"
+                  [rounded]="true"
+                  [semicircle]="false"
+                  [stroke]="2"
                 >
                 </round-progress>
 
                 <round-progress
-                  [current]="34"
-                  [max]="100"
+                  [animationDelay]="400"
+                  [animation]="'easeInOutQuart'"
+                  [background]="'#F2F2F2'"
+                  [clockwise]="true"
                   [color]="'#FCAB53'"
-                  [background]="'#F2F2F2'"
-                  [radius]="70"
-                  [stroke]="2"
-                  [semicircle]="false"
-                  [rounded]="true"
-                  [clockwise]="true"
-                  [responsive]="false"
+                  [current]="34"
                   [duration]="800"
-                  [animation]="'easeInOutQuart'"
-                  [animationDelay]="400"
+                  [max]="100"
+                  [radius]="70"
+                  [responsive]="false"
+                  [rounded]="true"
+                  [semicircle]="false"
+                  [stroke]="2"
                 >
 
                 </round-progress>
 
                 <round-progress
-                  [current]="97"
-                  [max]="100"
-                  [color]="'#8C88FF'"
-                  [background]="'#F2F2F2'"
-                  [radius]="40"
-                  [stroke]="2"
-                  [semicircle]="false"
-                  [rounded]="true"
-                  [clockwise]="true"
-                  [responsive]="false"
-                  [duration]="800"
-                  [animation]="'easeInOutQuart'"
                   [animationDelay]="400"
+                  [animation]="'easeInOutQuart'"
+                  [background]="'#F2F2F2'"
+                  [clockwise]="true"
+                  [color]="'#8C88FF'"
+                  [current]="97"
+                  [duration]="800"
+                  [max]="100"
+                  [radius]="40"
+                  [responsive]="false"
+                  [rounded]="true"
+                  [semicircle]="false"
+                  [stroke]="2"
                 >
 
                 </round-progress>
@@ -238,14 +238,14 @@
           </div>
           <div class="col-12 d-flex justify-content-center align-items-center flex-column mt-4">
             <ng-container>
-              <nb-chat status="info" title="Лог общения с AI" size="small">
+              <nb-chat size="small" status="info" title="Лог общения с AI">
                 <nb-chat-message
                   *ngFor="let msg of task.dialog"
-                  [type]="'text'"
+                  [avatar]="msg.isUserMessage ? user.picture : null"
                   [message]="msg.message"
                   [reply]="!msg.isUserMessage"
                   [sender]="msg.isUserMessage ? 'User' : 'Bot'"
-                  [avatar]="msg.isUserMessage ? user.picture : null"
+                  [type]="'text'"
                 >
                 </nb-chat-message>
               </nb-chat>
@@ -265,17 +265,17 @@
             <div class="d-flex flex-column">
               <h5>H<span style="color: #b00020">e</span>llo</h5>
               <div>Вы произенсли: <b>h<span style="color: #b00020">ɑ</span>loʊ</b></div>
-              <audio controls class="mt-1 mb-3"></audio>
+              <audio class="mt-1 mb-3" controls></audio>
               <div>Правильное произношение: <b>h<span style="color: #60af20">əˈ</span>loʊ</b></div>
-              <audio controls class="mt-1 mb-3"></audio>
+              <audio class="mt-1 mb-3" controls></audio>
             </div>
 
             <div class="d-flex flex-column mt-2">
               <h5>My n<span style="color: #b00020">ame</span> is Vova</h5>
               <div>Вы произенсли: <b>n<span style="color: #b00020">ɑˈmɛ</span></b></div>
-              <audio controls class="mt-1 mb-3"></audio>
+              <audio class="mt-1 mb-3" controls></audio>
               <div>Правильное произношение: <b>n<span style="color: #60af20">eɪm</span></b></div>
-              <audio controls class="mt-1 mb-3"></audio>
+              <audio class="mt-1 mb-3" controls></audio>
             </div>
           </div>
         </div>
@@ -313,9 +313,6 @@
         </div>
       </div>
     </div>
-
-
-
 
 
   </div>
